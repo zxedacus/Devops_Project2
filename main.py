@@ -1,17 +1,23 @@
 import requests
 from bs4 import BeautifulSoup
+import matplotlib.pyplot as plt
 
-url = 'https://finance.yahoo.com/world-indices'
+url = 'https://www.investing.com/indices/us-spx-500-historical-data'
 result = requests.get(url)
 doc = BeautifulSoup(result.text, 'lxml')
 
-title = doc.find_all('tr', {'class':'simpTblRow'})
-title1 = title[0].getText()
-#print(title1)
 
-for t in title:
-    print(t.getText())
+tradingDate = doc.find_all('time') 
+#tradingDate1 = tradingDate[0].getText()
+#print(tradingDate1)
 
+for d in tradingDate:
+    print(d.getText())
 
+price = doc.find_all('td', {'class':'datatable_cell__3gwri datatable_cell--align-end__Wua8C datatable_cell--down__2CL8n font-bold'}) 
+#price1 = price[0].getText()
+#print(price1)
 
+for p in price:
+    print(p.getText())
 
