@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://www.newegg.com/gigabyte-geforce-rtx-3090-gv-n3090gaming-oc-24gd/p/N82E16814932327?Item=N82E16814932327'
+url = 'https://finance.yahoo.com'
 result = requests.get(url)
-doc = BeautifulSoup(result.text, "html.parser")
+doc = BeautifulSoup(result.text, 'lxml')
 
-prices = doc.find_all(text="$")
-parent = prices[0].parent
-strong = parent.find("strong")
-print(strong.string)
+title = doc.find_all('ul', {'class':'Pos(r) article-cluster-boundary'})
+parent = title[0].parent
+print(parent.prettify())
+#strong = parent.find("strong")
+#print(strong.string)
 
