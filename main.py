@@ -8,23 +8,39 @@ doc = BeautifulSoup(result.text, 'lxml')
 
 x = []
 y = []
-#y = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
 
-tradingDate = doc.find_all('time') 
-#tradingDate1 = tradingDate[0].getText()
-#print(tradingDate1)
+def allin(keywords, string):
+    for keyword in keywords:
+        if keyword not in string:
+            return False
+    return True
 
-for d in tradingDate:
-    x.append(d.getText())
-    #print(d.getText())
+for table in doc.find_all("table"):
+    text = table.text.lower()
+    keywords = "date price open high low vol change".split()
+    
+    if allin(keywords, text):
+        break
 
-price = doc.find_all('td', {'class':'datatable_cell__3gwri datatable_cell--align-end__Wua8C'}) 
-#price1 = price[0].getText()
-#print(price1)
+tbody = table.find("tbody")
 
-for p in price:
-#     y.append(p.getText())
-    print(p.getText())
+print(tbody)
+
+# tradingDate = doc.find_all('time') 
+# #tradingDate1 = tradingDate[0].getText()
+# #print(tradingDate1)
+
+# for d in tradingDate:
+#     x.append(d.getText())
+#     #print(d.getText())
+
+# price = doc.find_all('td', {'class':'datatable_cell__3gwri datatable_cell--align-end__Wua8C'}) 
+# #price1 = price[0].getText()
+# #print(price1)
+
+# for p in price:
+# #     y.append(p.getText())
+#     print(p.getText())
     
 # print(x)
 # print(y)
