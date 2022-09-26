@@ -24,23 +24,14 @@ for table in doc.find_all("table"):
 
 tbody = table.find("tbody")
 
-print(tbody)
+for tr in tbody.find_all("tr"):
+    tds = tr.find_all("td")
+    date = tds[0].text
+    price = tds[1].text
 
-# tradingDate = doc.find_all('time') 
-# #tradingDate1 = tradingDate[0].getText()
-# #print(tradingDate1)
+print(date, price)
+    
 
-# for d in tradingDate:
-#     x.append(d.getText())
-#     #print(d.getText())
-
-# price = doc.find_all('td', {'class':'datatable_cell__3gwri datatable_cell--align-end__Wua8C'}) 
-# #price1 = price[0].getText()
-# #print(price1)
-
-# for p in price:
-# #     y.append(p.getText())
-#     print(p.getText())
     
 # print(x)
 # print(y)
