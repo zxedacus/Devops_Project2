@@ -36,10 +36,9 @@ for tr in tbody.find_all("tr"):
 print(dates, prices)
 
 
-# plt.plot(x,y)
-
-# plt.xlabel('Dates')
-# plt.ylabel('Returns')
-# plt.title('S&P 500')
-# plt.show()
+plt.plot(dates, prices)
+plt.xticks(rotation=90)
+plt.xlabel("date")
+plt.ylabel("price")
+plt.show()
 
